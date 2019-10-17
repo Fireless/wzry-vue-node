@@ -14,9 +14,17 @@ module.exports = app => {
         res.send(model)
     })
 
+    router.delete('/categories/:id',async(req,res) =>{
+        await Category.findByIdAndDelete(req.params.id,req.body)
+        res.send({
+            success: true
+        })
+    })
+
+
 
     router.get('/categories',async(req,res) =>{
-        const items = await Category.find().limit(10)
+        const items = await Category.find().populate('parent').limit(10)
         res.send(items)
     })
     
