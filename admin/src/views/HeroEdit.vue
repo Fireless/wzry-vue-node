@@ -1,6 +1,6 @@
 <template>
     <div class = "about">
-    <h1>{{id ? '编辑':'新建'}}物品</h1>
+    <h1>{{id ? '编辑':'新建'}}英雄</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
 
     
@@ -9,17 +9,18 @@
         <el-input v-model="model.name" ></el-input>
     </el-form-item>
         
-    <el-form-item label= "图标">
+    <el-form-item label= "头像">
         <el-upload
          class="avatar-uploader"
          :action="$http.defaults.baseURL + '/upload'"
         :show-file-list="false"
         :on-success="afterupload"
         :before-upload="beforeAvatarUpload">
-            <img v-if="model.icon" :src="model.icon" class="avatar">
+            <img v-if="model.avatar" :src="model.avatar" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
 
+     
     </el-form-item>
     <el-form-item>
      <el-button type="primary" native-type="submit"  >保存</el-button>
@@ -42,16 +43,16 @@
 
         methods:{
             afterupload(res){
-               this.$set(this.model,'icon',res.url)
+               this.$set(this.model,'avatar',res.url)
             },
             async save(){
                 
                 if(this.id){
-                   await  this.$http.put(`rest/items/${this.id}`,this.model)
+                   await  this.$http.put(`rest/heros/${this.id}`,this.model)
                 }else{
-                   await  this.$http.post('rest/items',this.model)
+                   await  this.$http.post('rest/heros',this.model)
                 }
-                this.$router.push('/items/list')
+                this.$router.push('/heros/list')
                 this.$message({
                     type:'success',
                     message:'保存成功'
@@ -59,12 +60,12 @@
             },
 
             async fetch(){
-                const res = await this.$http.get(`rest/items/${this.id}`)
+                const res = await this.$http.get(`rest/heros/${this.id}`)
                 this.model = res.data
             },
 
             async fetchParents(){
-                const res =await this.$http.get('rest/items')
+                const res =await this.$http.get('rest/heros')
                 this.parents =res.data
             }            
         },
