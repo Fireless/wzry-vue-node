@@ -4,7 +4,8 @@ import Router from 'vue-router'
 import main from './views/main.vue'
 import CreateEdit from './views/CreateEdit.vue'
 import CategoryList from './views/CategoryList.vue'
-
+import ItemEdit from './views/ItemEdit.vue'
+import ItemList from './views/ItemList.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -18,7 +19,13 @@ export default new Router({
       children:[
         {path: '/categories/create',component:CreateEdit},
         {path: '/categories/list',component:CategoryList},
-        {path: '/categories/edit/:id',component:CreateEdit,props:true}
+        {path: '/categories/edit/:id',component:CreateEdit,props:true},
+
+        {path: '/items/create',component:ItemEdit},
+        {path: '/items/list',component:ItemList},
+        {path: '/items/edit/:id',component:ItemEdit,props:true}
+
+
       ]
     },
     
