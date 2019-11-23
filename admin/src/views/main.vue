@@ -27,6 +27,13 @@
           <el-menu-item index="/articles/create">新建文章</el-menu-item>
           <el-menu-item index="/articles/list">文章列表</el-menu-item>
         </el-menu-item-group>
+
+        <el-menu-item-group>
+          <template slot="title">周儿</template>
+          <el-menu-item index="/tips/create">信息录入</el-menu-item>
+          <el-menu-item index="/tips/list">档案汇总</el-menu-item>
+        </el-menu-item-group>
+
         </el-submenu>
      </el-menu>
   </el-aside>
