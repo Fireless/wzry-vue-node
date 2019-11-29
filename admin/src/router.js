@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import Home from './views/Home.vue'
+import Login from './views/Login.vue'
 import main from './views/main.vue'
 import CreateEdit from './views/CreateEdit.vue'
 import CategoryList from './views/CategoryList.vue'
@@ -17,12 +17,17 @@ import ArticleList from './views/ArticleList.vue'
 import TipEdit from './views/TipEdit.vue'
 import TipList from './views/TipList.vue'
 
+import AdminUserEdit from './views/AdminUserEdit.vue'
+import AdminUserList from './views/AdminUserList.vue'
+
+
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {path:'/login',name:'login',component:Login},
     {
       path: '/',
       name: 'main',
@@ -46,7 +51,11 @@ export default new Router({
 
         {path: '/tips/create',component:TipEdit},
         {path: '/tips/list',component:TipList},
-        {path: '/tips/edit/:id',component:TipEdit,props:true}
+        {path: '/tips/edit/:id',component:TipEdit,props:true},
+
+         {path: '/admin_users/create',component:AdminUserEdit},
+        {path: '/admin_users/list',component:AdminUserList},
+        {path: '/admin_users/edit/:id',component:AdminUserEdit,props:true}
       ]
     },
     
